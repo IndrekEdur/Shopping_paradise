@@ -26,9 +26,14 @@ class BudgetCreateView(CreateView):
 # Here is the big dilemma, how to use multiple Models in one view, do I need to make different view for every Model?
 
 class BudgetDetailView(DetailView):
-    model = [Budget, Budget_item]
+    queryset = Budget.objects
+
     template_name = 'budgets/Budget_detail.html'
-    context_object_name = ['budget', 'budget_items']
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['budget_items'] = Budget_item.objects.all
+        return context
 
 class BudgetUpdateView(UpdateView):
     model = Budget
@@ -49,6 +54,7 @@ class Budget_itemListView(ListView):
     model = Budget_item
     template_name = 'budgets/Budget_detail.html'
     context_object_name = 'budget_items'
+
 
 class Budget_itemCreateView(CreateView):
     model = Budget_item

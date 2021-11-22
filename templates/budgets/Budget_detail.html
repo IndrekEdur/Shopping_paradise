@@ -7,16 +7,31 @@
     <p>Client: {{ budget.client }}</p>
     <p>Project: {{ budget.project }}</p><br/>
 
-    {% for budget_item in budget_items %}
+    <table class="table">
         <tr>
-            <td>{{ budget_item.pk }}</td>
-            <td>{{ budget_item.product }}</td>
-            <td>{{ budget_item.product_quantity }}</td>
-            <td>{{ budget_item.budget }}</td>
+            <th>PK</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price/pcs</th>
+            <th>Price total</th>
+            <th>Budget Id (PK)</th>
+
         </tr>
-    {% endfor %}
+
+        {% for budget_item in budget_items %}
+            {% if budget_item.budget.id == budget.pk %}
+            <tr>
+                <td>{{ budget_item.pk }}</td>
+                <td>{{ budget_item.product }}</td>
+                <td>{{ budget_item.product_quantity }}</td>
+                <td>{{ budget_item.product_price }}</td>
+                <td>{{ budget_item.calc_total }}</td>
+                <td>{{ budget_item.budget.id }}</td>
 
 
-    <a href="{% url 'budget_update' budget.pk %}">Update Budget</a>
-    <a href="{% url 'budget_delete' budget.pk %}">Delete Budget</a>
+            </tr><br/>
+            {% endif %}
+        {% endfor %}
+    </table>
+
 {% endblock %}
