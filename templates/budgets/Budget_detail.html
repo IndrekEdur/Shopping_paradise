@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>PK: {{ budget.pk }}</p>
+    <p>Name: {{ budget.name }}</p>
+    <p>Number: {{ budget.number }}</p>
+    <p>Client: {{ budget.client }}</p>
+    <p>Project: {{ budget.project }}</p><br/>
+
+    {% for budget_item in budget_items %}
+        <tr>
+            <td>{{ budget_item.pk }}</td>
+            <td>{{ budget_item.product }}</td>
+            <td>{{ budget_item.product_quantity }}</td>
+            <td>{{ budget_item.budget }}</td>
+        </tr>
+    {% endfor %}
+
+
+    <a href="{% url 'budget_update' budget.pk %}">Update Budget</a>
+    <a href="{% url 'budget_delete' budget.pk %}">Delete Budget</a>
+{% endblock %}

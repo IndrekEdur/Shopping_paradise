@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>PK: {{ project.pk }}</p>
+    <p>Name: {{ project.name }}</p>
+    <p>Number: {{ project.number }}</p>
+    <p>Address: {{ project.address }}</p>
+    <p>Client: {{ project.client }}</p><br/>
+    <a href="{% url 'project_update' project.pk %}">Update project</a>
+    <a href="{% url 'project_delete' project.pk %}">Delete project</a>
+{% endblock %}

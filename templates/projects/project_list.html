@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>PK</th>
+            <th>Name</th>
+            <th>number</th>
+            <th>address</th>
+            <th>client</th>
+        </tr>
+        {% for project in projects %}
+            <tr>
+                <td>{{ project.pk }}</td>
+                <td><a href="{% url 'project_detail' project.pk %}">{{ project.name }}</a></td>
+                <td>{{ project.number }}</td>
+                <td>{{ project.address }}</td>
+                <td>{{ project.client }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'project_create' %}">Add project</a>
+{% endblock %}

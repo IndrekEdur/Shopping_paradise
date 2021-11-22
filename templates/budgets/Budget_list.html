@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>PK</th>
+            <th>Name</th>
+            <th>number</th>
+            <th>client</th>
+            <th>project</th>
+        </tr>
+        {% for budget in budgets %}
+            <tr>
+                <td>{{ budget.pk }}</td>
+                <td><a href="{% url 'budget_detail' budget.pk %}">{{ budget.name }}</a></td>
+                <td>{{ budget.number }}</td>
+                <td>{{ budget.client }}</td>
+                <td>{{ budget.project }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'budget_create' %}">Add Budget</a>
+{% endblock %}

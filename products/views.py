@@ -10,26 +10,26 @@ import pdb
 
 class ProductListView(ListView):
     model = Product
-    template_name = 'product_list.html'
+    template_name = 'products/product_list.html'
     context_object_name = 'products'
 
 class ProductCreateView(CreateView):
     model = Product
     Product.objects.order_by().filter()
-    template_name = 'product_create.html'
+    template_name = 'products/product_create.html'
     fields = '__all__'
     success_url = reverse_lazy('product_list')
 
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'product_detail.html'
+    template_name = 'products/product_detail.html'
     context_object_name = 'product'
 
 
 class ProductUpdateView(UpdateView):
     model = Product
-    template_name = 'product_update.html'
+    template_name = 'products/product_update.html'
     context_object_name = 'product'
     fields = '__all__'
     success_url = reverse_lazy('product_list')
@@ -37,7 +37,7 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'product_delete.html'
+    template_name = 'products/product_delete.html'
     context_object_name = 'product'
     success_url = reverse_lazy('product_list')
 
@@ -96,6 +96,11 @@ class CategoryDeleteView(DeleteView):
     template_name = 'category_delete.html'
     context_object_name = 'category'
     success_url = reverse_lazy('category_list')
+
+
+
+
+
 
 
 # def products(request):
