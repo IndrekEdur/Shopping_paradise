@@ -23,6 +23,8 @@ class BudgetCreateView(CreateView):
     fields = '__all__'
     success_url = reverse_lazy('budget_list')
 
+# Here is the big dilemma, how to use multiple Models in one view
+
 class BudgetDetailView(DetailView):
     model = [Budget, Budget_item]
     template_name = 'budgets/Budget_detail.html'
