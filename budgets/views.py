@@ -23,17 +23,25 @@ class BudgetCreateView(CreateView):
     fields = '__all__'
     success_url = reverse_lazy('budget_list')
 
-# Here is the big dilemma, how to use multiple Models in one view, do I need to make different view for every Model?
-
 class BudgetDetailView(DetailView):
     queryset = Budget.objects
 
     template_name = 'budgets/Budget_detail.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['budget_items'] = Budget_item.objects.all
+
+        amount = 0
+        #for item in Budget_item.objects:
+            #print(item)
+            #b = Budget_item.calc_total(item)
+            #amount = (amount + b)
+        context['budget_total'] = amount
+
         return context
+
+
+
 
 class BudgetUpdateView(UpdateView):
     model = Budget

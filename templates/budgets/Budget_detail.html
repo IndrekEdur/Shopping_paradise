@@ -15,9 +15,8 @@
             <th>Price/pcs</th>
             <th>Price total</th>
             <th>Budget Id (PK)</th>
-
         </tr>
-
+        a<% total=0 %>
         {% for budget_item in budget_items %}
             {% if budget_item.budget.id == budget.pk %}
             <tr>
@@ -27,11 +26,14 @@
                 <td>{{ budget_item.product_price }}</td>
                 <td>{{ budget_item.calc_total }}</td>
                 <td>{{ budget_item.budget.id }}</td>
-
-
+                <indent>
+                    <% total = total + budget_item.product_price %>
+                </indent>
             </tr><br/>
             {% endif %}
         {% endfor %}
-    </table>
 
+
+    </table>
+    <td>Budget total: {{ total }}</td>
 {% endblock %}

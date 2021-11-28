@@ -7,13 +7,16 @@
             <th>Name</th>
             <th>Price</th>
             <th>Category</th>
+            <th>Image</th>
         </tr>
         {% for product in products %}
+
             <tr>
                 <td>{{ product.pk }}</td>
                 <td><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.category.name }}</td>
+                <th><img src=" /media/{{ product.image }} " width="50"> <br/></th>
             </tr>
         {% endfor %}
     </table>
